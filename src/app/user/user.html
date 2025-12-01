@@ -1,8 +1,8 @@
 <div>
     <button (click)="onClickUser()">
-        <img [attr.src]="getPath" [alt]="selectedUser.name" />
+        <img [attr.src]="getPath()" [alt]="selectedUser().name" />
         <span>
-            {{ selectedUser.name }}
+            {{ selectedUser().name }}
         </span>
     </button>
 </div>
