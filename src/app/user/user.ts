@@ -1,4 +1,4 @@
-import { Component, Input, signal, computed } from '@angular/core';
+import { Component, Input, input, signal, computed } from '@angular/core';
 import { required } from '@angular/forms/signals';
 // import { DUMMY_USERS } from '../dummy-users';
 
@@ -13,6 +13,8 @@ import { required } from '@angular/forms/signals';
 export class User {
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) name: string = '';
+  // name = input.required<string>();
+
   
   // selectedUser = signal(DUMMY_USERS[randomIndex]);
   // getPath = computed(() => 'images/users/' + this.selectedUser().avatar);
