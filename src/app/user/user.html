@@ -1,8 +1,16 @@
-<div>
+<!-- <div>
     <button (click)="onClickUser()">
         <img [attr.src]="getPath()" [alt]="selectedUser().name" />
         <span>
             {{ selectedUser().name }}
+        </span>
+    </button>
+</div> -->
+<div>
+    <button>
+        <img [attr.src]="getPath" [alt]="name" />
+        <span>
+            {{ name }}
         </span>
     </button>
 </div>
