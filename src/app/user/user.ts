@@ -11,9 +11,12 @@ import { Component, Input, input, signal, computed, Output, output, EventEmitter
   styleUrl: './user.css',
 })
 export class User {
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) avatar!: string;
-  @Input({ required: true }) name: string = '';
+  @Input({ required: true }) user!: {
+    id: string;
+    name: string;
+    avatar: string; 
+  };
+  // @Input({ required: true }) name: string = '';
   // name = input.required<string>();
 
   @Output() select = new EventEmitter<string>();
@@ -24,7 +27,7 @@ export class User {
 
   get getPath() {
     // return 'images/users/' + this.selectedUser.avatar
-    return 'images/users/' + this.avatar;
+    return 'images/users/' + this.user.avatar;
   }
 
   onClickUser() {
@@ -32,6 +35,6 @@ export class User {
 
     //   this.selectedUser.set(DUMMY_USERS[randomIndex]);
     //   // this.selectedUser = DUMMY_USERS[randomIndex];
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
