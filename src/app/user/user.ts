@@ -1,4 +1,4 @@
-import { Component, Input, input, signal, computed, Output, EventEmitter } from '@angular/core';
+import { Component, Input, input, signal, computed, Output, output, EventEmitter } from '@angular/core';
 // import { required } from '@angular/forms/signals';
 // import { DUMMY_USERS } from '../dummy-users';
 
@@ -16,7 +16,8 @@ export class User {
   @Input({ required: true }) name: string = '';
   // name = input.required<string>();
 
-  @Output() select = new EventEmitter();
+  @Output() select = new EventEmitter<string>();
+  // select = output<string>();
 
   // selectedUser = signal(DUMMY_USERS[randomIndex]);
   // getPath = computed(() => 'images/users/' + this.selectedUser().avatar);
