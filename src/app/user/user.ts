@@ -1,4 +1,6 @@
 import { Component, Input, input, signal, computed, Output, output, EventEmitter } from '@angular/core';
+import { type UserType } from './user.model';
+
 // import { required } from '@angular/forms/signals';
 // import { DUMMY_USERS } from '../dummy-users';
 
@@ -9,11 +11,11 @@ import { Component, Input, input, signal, computed, Output, output, EventEmitter
 //   name: string;
 //   avatar: string; 
 // };
-interface UserType {
-  id: string;
-  name: string;
-  avatar: string; 
-};
+// interface UserType {
+//   id: string;
+//   name: string;
+//   avatar: string; 
+// };
 
 @Component({
   selector: 'app-user',
@@ -28,6 +30,7 @@ export class User {
   //   avatar: string; 
   // };
   @Input({ required: true }) user!: UserType;
+   @Input({ required: true }) selected!: boolean;
   // @Input({ required: true }) name: string = '';
   // name = input.required<string>();
 

@@ -4,6 +4,7 @@ import { Header } from './header/header';
 import { User } from './user/user';
 import { DUMMY_USERS } from './dummy-users';
 import { Tasks } from "./tasks/tasks";
+// import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
