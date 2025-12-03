@@ -2,6 +2,7 @@ import { Component, Input, EventEmitter } from '@angular/core';
 import { Task } from './task/task';
 import { DUMMY_TASKS } from './dummy-tasks';
 import { NewTask } from "./new-task/new-task";
+import { type NewTaskModel } from './new-task/new-task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -25,11 +26,22 @@ export class Tasks {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
-  onAddTask() {
+  onStartAddTask() {
     this.isAddingTask = true;
   }
 
   onCancelAddTask() {
     this.isAddingTask = false;
+  }
+
+  onAddTask(taskData: NewTaskModel) {
+    this.tasks.push({
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.dueDate,
+    });
+    this.isAddingTask = false;  
   }
 }
