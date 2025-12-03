@@ -1,8 +1,8 @@
 import { Component, Input, EventEmitter } from '@angular/core';
 import { Task } from './task/task';
-import { DUMMY_TASKS } from './dummy-tasks';
 import { NewTask } from "./new-task/new-task";
 import { type NewTaskModel } from './new-task/new-task.model';
+import { TasksServices } from './tasks.services';
 
 @Component({
   selector: 'app-tasks',
@@ -15,33 +15,28 @@ export class Tasks {
   @Input({ required: true }) name!: string;
 
   isAddingTask = false;
-
-  tasks = DUMMY_TASKS;
+  // private tasksServices = new TasksServices();
+  // private tasksServices: TasksServices;
+  
+  constructor(private tasksServices: TasksServices) {
+    // tasksServices = this.tasksServices
+  }
+  
+  
 
   get selectedUserTasks() {
-    return this.tasks.filter((task) => task.userId === this.userId);
+    return this.tasksServices.getUserTasks(this.userId);
   }
 
   onCompleteTask(id: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.tasksServices.removeTask(id);
   }
 
   onStartAddTask() {
     this.isAddingTask = true;
   }
 
-  onCancelAddTask() {
+  onCloseAddTask() {
     this.isAddingTask = false;
-  }
-
-  onAddTask(taskData: NewTaskModel) {
-    this.tasks.push({
-      id: new Date().getTime().toString(),
-      userId: this.userId,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.dueDate,
-    });
-    this.isAddingTask = false;  
   }
 }
