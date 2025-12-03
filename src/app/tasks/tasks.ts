@@ -22,14 +22,8 @@ export class Tasks {
     // tasksServices = this.tasksServices
   }
   
-  
-
   get selectedUserTasks() {
     return this.tasksServices.getUserTasks(this.userId);
-  }
-
-  onCompleteTask(id: string) {
-    this.tasksServices.removeTask(id);
   }
 
   onStartAddTask() {
